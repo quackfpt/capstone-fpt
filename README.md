@@ -6,7 +6,7 @@ AI-powered Solidity vulnerability detection using a **6-Step Sequential Pipeline
 ![Backend](https://img.shields.io/badge/Backend-FastAPI-green)
 ![Frontend](https://img.shields.io/badge/Frontend-Next.js%2016-black)
 ![AI](https://img.shields.io/badge/AI-Gemini%202.5%20Pro-purple)
-![RAG](https://img.shields.io/badge/RAG-DAppSCAN%20407%20cases-orange)
+![RAG](https://img.shields.io/badge/RAG-FORGE%2021%2C032%20points-orange)
 
 ---
 
@@ -24,7 +24,7 @@ Upload .sol  -->  [1] AST Chunking  -->  [2+3] Slither + RAG (parallel)
 |------|-----------|-----------|---------|
 | 1 | AST Chunking | tree-sitter + Regex fallback | Tach function, xac dinh risky functions |
 | 2 | Slither | Static Analyzer | Phat hien pattern, tao hints cho RAG |
-| 3 | RAG Search | Qdrant + voyage-code-3 (1024d) | Tim vuln tuong tu trong 407 case DAppSCAN |
+| 3 | RAG Search | Qdrant + voyage-code-3 (1024d) | Tim vuln tuong tu trong 21,032 points (FORGE-Curated + audits-with-reasons) |
 | 4 | Voyage Reranking + CRAG Gate | voyage-rerank-2.5 + Rule-based CRAG | Rerank + quality gate (Correct/Ambiguous/Incorrect) |
 | 5 | LLM CoT | Gemini 2.5 Pro | Chain-of-Thought reasoning + 14 anti-hallucination rules |
 | 6 | Report | JSON structured | Verdict + vulnerabilities + evidence |
@@ -51,8 +51,8 @@ Upload .sol  -->  [1] AST Chunking  -->  [2+3] Slither + RAG (parallel)
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/quackfpt/DarkHotel-Capstone.git
-cd DarkHotel-Capstone
+git clone https://github.com/quackfpt/capstone-fpt.git
+cd capstone-fpt
 ```
 
 ### 2. Setup Backend
@@ -95,10 +95,10 @@ GOOGLE_CLOUD_PROJECT=your_project_id_here
 GOOGLE_CLOUD_LOCATION=us-central1
 MODEL_NAME=gemini-2.5-pro
 VOYAGE_API_KEY=your_voyage_api_key_here
-QDRANT_DB_PATH=./qdrant_db_v8
+QDRANT_DB_PATH=./qdrant_db_forge
 ```
 
-> **Luu y:** Can chay `python migrate_to_qdrant_v8.py` lan dau de build Knowledge Base (`qdrant_db_v8/`) voi 407 DAppSCAN entries.
+> **Luu y:** Can chay `python archive/migrate_to_qdrant_v8.py` lan dau de build Knowledge Base (`qdrant_db_forge/`) voi 21,032 points tu FORGE-Curated + audits-with-reasons.
 
 ### 4. Setup Frontend
 
@@ -141,7 +141,7 @@ npm run dev
    - **Primary Vulnerability**: Loi chinh voi severity, SWC ID, exploit scenario, recommendation
    - **Secondary Warnings**: Cac loi phu
    - **Slither Analysis**: Ket qua static analysis
-   - **RAG Knowledge Base**: Similar cases tu DAppSCAN
+   - **RAG Knowledge Base**: Similar cases tu FORGE-Curated + audits-with-reasons
    - **AI Reasoning**: Chain-of-Thought tu LLM
 
 ---
@@ -158,8 +158,10 @@ DarkHotel-Capstone/
 |   +-- smart_rag_system.py             # RAG v7 - voyage-code-3 + Qdrant + voyage-rerank-2.5 + CRAG (Step 3-4)
 |   +-- llm_analyzer.py                 # Gemini 2.5 Pro + CoT + 14 anti-hallucination rules (Step 5)
 |   |
-|   +-- qdrant_db_v8/                   # Vector DB (407 DAppSCAN entries, voyage-code-3 1024d)
-|   +-- darkhotel_knowledge_base_v7.json  # Knowledge base source (JSON)
+|   +-- qdrant_db_forge/                # Vector DB (21,032 points, voyage-code-3 1024d) [not committed]
+|   +-- archive/
+|   |   +-- darkhotel_knowledge_base_v7.json  # Knowledge base source (JSON)
+|   |   +-- migrate_to_qdrant_v8.py           # Script rebuild Qdrant DB
 |   +-- .env.example                    # Environment template
 |   +-- requirements.txt                # Python dependencies
 |
@@ -171,16 +173,17 @@ DarkHotel-Capstone/
 |   +-- package.json
 |
 +-- evaluation/
-|   +-- run_smartbugs_eval.py           # SmartBugs-Curated evaluation (98 vulnerable)
-|   +-- run_top200_eval.py              # GPTScan Top200 evaluation (225 safe)
-|   +-- run_top10_reentrancy_eval.py    # Top10 reentrancy evaluation
-|   +-- run_ablation_llm_only_*.py      # Ablation study (LLM-only, no RAG)
-|   +-- review2_report.html             # Review 2 report (HTML)
+|   +-- runners/
+|   |   +-- run_smartbugs_eval.py       # SmartBugs-Curated evaluation (98 contracts)
+|   |   +-- run_ablation_smartbugs.py   # Ablation study (4 conditions: LLM-only / +RAG / +Slither / Full)
+|   |   +-- eval_utils.py               # Shared evaluation utilities
 |   |
 |   +-- external_datasets/
 |   |   +-- SmartBugs-Curated/          # 98 vulnerable contracts (SWC-107/101/104)
-|   |   +-- safe_contracts/             # 23 verified safe contracts
+|   |   +-- safe_contracts/             # Verified safe contracts
 |   |   +-- top_10_reentrancy/          # 10 reentrancy test contracts
+|   |
+|   +-- ground_truth/                   # Ground truth labels + vulnerable/safe contracts
 |
 +-- README.md                           # This file
 ```
@@ -273,8 +276,8 @@ curl http://localhost:8000/
 
 ```bash
 cd backend
-# Rebuild Qdrant v8 tu knowledge base JSON (voyage-code-3)
-python migrate_to_qdrant_v8.py
+# Rebuild Qdrant tu knowledge base JSON (voyage-code-3)
+python archive/migrate_to_qdrant_v8.py
 ```
 
 ---
@@ -286,11 +289,11 @@ MIT License
 ---
 
 **Version:** 7.0
-**Last Updated:** 2026-04-01
-**Knowledge Base:** 407 DAppSCAN entries (enriched v7, 29 security teams, 608 audits)
+**Last Updated:** 2026-05-01
+**Knowledge Base:** 21,032 points — FORGE-Curated (208 audit reports) + audits-with-reasons (2,472 entries)
 **Embedding:** voyage-code-3 (Voyage AI, 1024d)
 **Reranker:** voyage-rerank-2.5 (Voyage AI, instruction-following)
-**Vector DB:** Qdrant (local mode)
+**Vector DB:** Qdrant (local mode, `qdrant_db_forge/`)
 **Detection:** Reentrancy (SWC-107), Integer Overflow (SWC-101), Unchecked Return Value (SWC-104)
 
 **Made by DarkHotel Team**
