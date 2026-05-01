@@ -14,14 +14,14 @@ Upload .sol
     |
     v  (PARALLEL)
 [2] Slither ---------- Static analysis, extract hints
-[3] RAG Search ------- Per-function search trong 407 DAppSCAN cases (voyage-code-3 + Qdrant)
-    |
+[3] RAG Search ------- Per-function search trong 21,032 KB points (voyage-code-3 + Qdrant)
+    |                    2 collections: forge_curated (208 audit reports) + audits_with_reasons (2,472 entries)
     v
 [4] Voyage Reranking + CRAG Gate
     |  voyage-rerank-2.5 (instruction-following, code-aware)
-    |  CRAG: CORRECT (>=0.7) -> full evidence
-    |        AMBIGUOUS (0.3-0.7) -> filtered evidence
-    |        INCORRECT (<0.3) -> no evidence (LLM-only mode)
+    |  CRAG: CORRECT  (>=0.65) -> full evidence
+    |        AMBIGUOUS (0.30-0.65) -> filtered evidence
+    |        INCORRECT (<0.30)  -> no evidence (LLM-only mode)
     v
 [5] LLM CoT --------- Chain-of-Thought + 14 anti-hallucination rules
     |
@@ -74,10 +74,10 @@ backend/
 +-- smart_rag_system.py         # RAG v7 (voyage-code-3 + Qdrant + voyage-rerank-2.5 + CRAG)
 +-- llm_analyzer.py             # LLM CoT + 14 anti-hallucination rules
 |
-+-- qdrant_db_v8/               # Vector DB (Qdrant, 407 DAppSCAN entries, voyage-code-3 1024d)
-+-- darkhotel_knowledge_base_v7.json  # Knowledge base source
-+-- migrate_to_qdrant_v8.py     # Script rebuild Qdrant DB tu JSON (voyage-code-3)
-+-- migrate_to_qdrant_v7.py     # Legacy migration script (CodeRankEmbed, 768d)
++-- qdrant_db_forge/            # Vector DB (Qdrant, 21,032 points, voyage-code-3 1024d) [not committed]
++-- archive/
+|   +-- darkhotel_knowledge_base_v7.json  # Knowledge base source JSON
+|   +-- migrate_to_qdrant_v8.py           # Script rebuild Qdrant DB tu JSON (voyage-code-3)
 +-- .env                        # Environment config (khong commit)
 +-- .env.example                # Config template
 +-- requirements.txt            # Python dependencies
@@ -127,7 +127,7 @@ GOOGLE_CLOUD_PROJECT=your_project_id_here
 GOOGLE_CLOUD_LOCATION=us-central1
 MODEL_NAME=gemini-2.5-pro
 VOYAGE_API_KEY=your_voyage_api_key_here
-QDRANT_DB_PATH=./qdrant_db_v8
+QDRANT_DB_PATH=./qdrant_db_forge
 ```
 
 Lay Voyage API key tai: https://dash.voyageai.com/
@@ -139,7 +139,7 @@ cd backend
 python migrate_to_qdrant_v8.py
 ```
 
-Script se embed 407 entries bang voyage-code-3 va luu vao `qdrant_db_v8/`.
+Script se embed 21,032 points (2 collections: forge_curated + audits_with_reasons) bang voyage-code-3 va luu vao `qdrant_db_forge/`.
 
 ---
 
@@ -239,9 +239,9 @@ Kiem tra `VOYAGE_API_KEY` trong file `.env`. Lay key tai https://dash.voyageai.c
 ---
 
 **Version**: 7.0
-**Last Updated**: 2026-04-01
-**Knowledge Base**: 407 DAppSCAN entries (enriched v7, 29 security teams, 608 audits)
+**Last Updated**: 2026-05-01
+**Knowledge Base**: 21,032 points — FORGE-Curated (208 audit reports) + audits-with-reasons (2,472 entries)
 **Embedding**: voyage-code-3 (Voyage AI, 1024d)
 **Reranker**: voyage-rerank-2.5 (Voyage AI, instruction-following)
-**Vector DB**: Qdrant (local mode)
+**Vector DB**: Qdrant (local mode, `qdrant_db_forge/`)
 **Detection**: Reentrancy (SWC-107), Integer Overflow (SWC-101), Unchecked Return Value (SWC-104)
