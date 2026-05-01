@@ -787,7 +787,7 @@
                 <li><strong>Per-function search:</strong> Moi ham rui ro duoc tim kiem rieng trong knowledge base</li>
                 <li><strong>voyage-code-3:</strong> Nhung vector 1024 chieu qua Voyage AI API, toi uu cho code</li>
                 <li><strong>Qdrant search:</strong> Cosine similarity, limit = top_k × 3 (du 3 lan cho reranker)</li>
-                <li><strong>Score threshold:</strong> 0.3 (loai bo ket qua cosine similarity thap)</li>
+                <li><strong>Score threshold:</strong> 0.15 (loai bo ket qua cosine similarity thap)</li>
                 <li><strong>Dedup:</strong> Nhom theo (vuln_type, swc_id, source_function, audit_company), giu toi da 2-3 moi nhom</li>
                 <li><strong>2 collections:</strong> forge_curated (bao cao audit) + audits_with_reasons (2,472 entries)</li>
               </ul>
@@ -840,9 +840,9 @@
                 <li><strong>3 hanh dong dua tren combined_score:</strong></li>
               </ul>
               <table class="styled-table" style="margin-top:10px;font-size:0.85rem">
-                <tr style="background:rgba(34,197,94,0.1)"><td><strong>CORRECT</strong></td><td>score &ge; 0.7</td><td>Gui tat ca 5 ket qua cho LLM</td></tr>
-                <tr style="background:rgba(245,158,11,0.1)"><td><strong>AMBIGUOUS</strong></td><td>0.3 &le; score &lt; 0.7</td><td>Chi gui ket qua co score &ge; 0.3</td></tr>
-                <tr style="background:rgba(239,68,68,0.1)"><td><strong>INCORRECT</strong></td><td>score &lt; 0.3</td><td>KHONG gui bang chung — LLM tu phan doan</td></tr>
+                <tr style="background:rgba(34,197,94,0.1)"><td><strong>CORRECT</strong></td><td>score &ge; 0.65</td><td>Gui tat ca 5 ket qua cho LLM</td></tr>
+                <tr style="background:rgba(245,158,11,0.1)"><td><strong>AMBIGUOUS</strong></td><td>0.30 &le; score &lt; 0.65</td><td>Chi gui ket qua co score &ge; 0.30</td></tr>
+                <tr style="background:rgba(239,68,68,0.1)"><td><strong>INCORRECT</strong></td><td>score &lt; 0.30</td><td>KHONG gui bang chung — LLM tu phan doan</td></tr>
               </table>
               <div style="margin-top:10px;padding:10px;background:rgba(245,158,11,0.08);border-radius:8px;font-size:0.83rem">
                 <strong>Voyage floor:</strong> Neu voyage-code-3 score &ge; 0.75 nhung rerank score &lt; 0.3 → day len AMBIGUOUS (vi voyage-code-3 hieu code tot hon).
@@ -948,7 +948,7 @@
 {
   <span class="string">"success"</span>: <span class="keyword">true</span>,
   <span class="string">"filename"</span>: <span class="string">"Contract.sol"</span>,
-  <span class="string">"pipeline_version"</span>: <span class="string">"6.0-6step"</span>,
+  <span class="string">"pipeline_version"</span>: <span class="string">"7.0-6step"</span>,
 
   <span class="comment">// Ket qua LLM</span>
   <span class="string">"ai_analysis_structured"</span>: {
@@ -1164,7 +1164,7 @@
         <table class="styled-table" style="font-size:0.88rem">
           <tr><td style="width:140px;font-weight:600">Loai</td><td>Rule-based (KHONG phai ML model)</td></tr>
           <tr><td style="font-weight:600">Nguon cam hung</td><td>Yan et al., arXiv:2401.15884</td></tr>
-          <tr><td style="font-weight:600">Logic</td><td>2 nguong co dinh: CORRECT &ge;0.7, INCORRECT &lt;0.3</td></tr>
+          <tr><td style="font-weight:600">Logic</td><td>2 nguong co dinh: CORRECT &ge;0.65, INCORRECT &lt;0.30</td></tr>
           <tr><td style="font-weight:600">Co che an toan</td><td>voyage-code-3 floor &ge;0.75 → khong drop xuong INCORRECT</td></tr>
           <tr><td style="font-weight:600">Vai tro</td><td>Ngan RAG khong lien quan lam nhieu LLM</td></tr>
         </table>
@@ -1448,9 +1448,10 @@
 │   ├── <span style="color:var(--cyan)">slither_smart_wrapper.py</span>          <span class="comment"># Buoc 2: Static analysis (26.4 KB)</span>
 │   ├── <span style="color:var(--cyan)">smart_rag_system.py</span>               <span class="comment"># Buoc 3+4: RAG + Rerank + CRAG (14.5 KB)</span>
 │   ├── <span style="color:var(--cyan)">llm_analyzer.py</span>                   <span class="comment"># Buoc 5: LLM reasoning (27 KB)</span>
-│   ├── <span style="color:var(--green)">migrate_to_qdrant_v7.py</span>          <span class="comment"># Script: xay dung Qdrant DB (chay 1 lan)</span>
-│   ├── <span style="color:var(--orange)">knowledge_base_v7.json</span>           <span class="comment"># 2,472 entries DAppSCAN (~900 KB)</span>
-│   ├── <span style="color:var(--orange)">qdrant_db_forge/</span>                 <span class="comment"># Vector DB (21,032 pts, 1024d)</span>
+│   ├── <span style="color:var(--orange)">qdrant_db_forge/</span>                 <span class="comment"># Vector DB (21,032 pts, 1024d) [not committed]</span>
+│   ├── <span style="color:var(--accent2)">archive/</span>
+│   │   ├── <span style="color:var(--green)">migrate_to_qdrant_v8.py</span>      <span class="comment"># Script: xay dung Qdrant DB (chay 1 lan)</span>
+│   │   └── <span style="color:var(--orange)">darkhotel_knowledge_base_v7.json</span> <span class="comment"># 2,472 entries DAppSCAN (~900 KB)</span>
 │   ├── requirements.txt                  <span class="comment"># Python dependencies</span>
 │   └── .env.example                      <span class="comment"># Mau cau hinh</span>
 │
@@ -1463,21 +1464,19 @@
 │   └── next.config.ts                    <span class="comment"># Next.js config</span>
 │
 ├── <span style="color:var(--accent2)">evaluation/</span>                           <span class="comment"># Benchmarking & evaluation</span>
-│   ├── run_smartbugs_eval.py             <span class="comment"># Eval SmartBugs (98 contracts)</span>
-│   ├── run_top200_eval.py                <span class="comment"># Eval GPTScan Top200 (225 contracts)</span>
-│   ├── run_safe_contracts_eval.py        <span class="comment"># Eval safe contracts (23 contracts)</span>
-│   ├── run_top10_reentrancy_eval.py      <span class="comment"># Eval reentrancy (10 contracts)</span>
-│   ├── run_ablation_*.py                 <span class="comment"># Ablation studies (LLM-only)</span>
-│   ├── analyze_smartbugs_metrics.py      <span class="comment"># Tinh Precision/Recall/F1</span>
-│   ├── external_datasets/                <span class="comment"># SmartBugs, safe_contracts, top_10</span>
-│   └── *.json                            <span class="comment"># Ket qua danh gia</span>
+│   ├── <span style="color:var(--accent2)">runners/</span>
+│   │   ├── run_smartbugs_eval.py         <span class="comment"># Eval SmartBugs (98 contracts)</span>
+│   │   ├── run_ablation_smartbugs.py     <span class="comment"># Ablation study (4 dieu kien)</span>
+│   │   └── eval_utils.py                 <span class="comment"># Tien ich dung chung</span>
+│   ├── external_datasets/                <span class="comment"># SmartBugs-Curated, safe_contracts, top_10</span>
+│   ├── ground_truth/                     <span class="comment"># Labels + vulnerable/safe contracts</span>
+│   └── report_result/                    <span class="comment"># Ket qua danh gia JSON</span>
 │
 ├── <span style="color:var(--pink)">docs/</span>                                 <span class="comment"># Tai lieu</span>
 │   ├── SETUP.md                          <span class="comment"># Huong dan cai dat</span>
 │   └── DEBUGGING.md                      <span class="comment"># Huong dan debug</span>
 │
 ├── README.md                             <span class="comment"># README chinh</span>
-├── WORKFLOW_V6.md                        <span class="comment"># Pipeline v6 chi tiet</span>
 └── START_FRONTEND.bat                    <span class="comment"># Khoi dong frontend (Windows)</span>
       </div>
     </div>
