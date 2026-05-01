@@ -2,7 +2,7 @@
 
 Frontend cho he thong phan tich lo hong Smart Contract, xay dung voi **Next.js + TypeScript + Tailwind CSS**.
 
-**Version:** 5.1.0
+**Version:** 7.0
 
 ---
 
@@ -35,12 +35,16 @@ Dashboard web cho phep:
 ```
 frontend/
 +-- app/
-|   +-- page.tsx           # Main dashboard (upload + structured results)
-|   +-- layout.tsx         # Root layout
-|   +-- globals.css        # Global styles + Tailwind
-+-- public/                # Static assets
-+-- package.json           # Dependencies
-+-- tsconfig.json          # TypeScript config
+|   +-- page.tsx                    # Main dashboard (upload + structured results)
+|   +-- layout.tsx                  # Root layout + theme init script
+|   +-- globals.css                 # Global styles + Tailwind
+|   +-- components/
+|       +-- AuditReport.tsx         # Structured audit report display
+|       +-- SourceCodeViewer.tsx    # Source code viewer with line highlighting
+|       +-- FloatingCoins.tsx       # Decorative background animation
++-- public/                         # Static assets
++-- package.json                    # Dependencies
++-- tsconfig.json                   # TypeScript config
 ```
 
 ---
@@ -183,6 +187,6 @@ npm start
 
 ---
 
-**Version:** 5.1.0
-**Last Updated:** 2026-03-12
+**Version:** 7.0
+**Last Updated:** 2026-05-01
 **Backend:** FastAPI (http://127.0.0.1:8000)

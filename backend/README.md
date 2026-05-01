@@ -136,7 +136,7 @@ Lay Voyage API key tai: https://dash.voyageai.com/
 
 ```bash
 cd backend
-python migrate_to_qdrant_v8.py
+python archive/migrate_to_qdrant_v8.py
 ```
 
 Script se embed 21,032 points (2 collections: forge_curated + audits_with_reasons) bang voyage-code-3 va luu vao `qdrant_db_forge/`.
@@ -229,7 +229,7 @@ Rebuild Knowledge Base:
 
 ```bash
 cd backend
-python migrate_to_qdrant_v8.py
+python archive/migrate_to_qdrant_v8.py
 ```
 
 ### Voyage API key error
