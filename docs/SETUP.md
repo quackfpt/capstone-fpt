@@ -48,14 +48,14 @@ GOOGLE_CLOUD_PROJECT=your_project_id_here
 GOOGLE_CLOUD_LOCATION=us-central1
 MODEL_NAME=gemini-2.5-pro
 VOYAGE_API_KEY=your_voyage_api_key_here
-QDRANT_DB_PATH=./qdrant_db_v8
+QDRANT_DB_PATH=./qdrant_db_forge
 ```
 
 Get API keys:
 - **Gemini**: https://aistudio.google.com/apikey
 - **Voyage AI**: https://dash.voyageai.com/ (dang ky free tier)
 
-> **Note:** Can chay `python migrate_to_qdrant_v8.py` lan dau de build Knowledge Base (`qdrant_db_v8/`) voi 407 DAppSCAN entries su dung voyage-code-3 embeddings.
+> **Note:** Can chay `python archive/migrate_to_qdrant_v8.py` lan dau de build Knowledge Base (`qdrant_db_forge/`) voi 21,032 points (FORGE-Curated 208 reports + audits-with-reasons 2,472 entries) su dung voyage-code-3 embeddings.
 
 ### 3. Frontend Setup
 
@@ -123,19 +123,23 @@ DarkHotel-Capstone/
 |   +-- smart_rag_system.py     # RAG v7 (voyage-code-3 + Qdrant + voyage-rerank-2.5 + CRAG)
 |   +-- llm_analyzer.py         # Gemini 2.5 Pro + CoT + anti-hallucination
 |   +-- slither_smart_wrapper.py  # Slither + auto solc
-|   +-- migrate_to_qdrant_v8.py # Build Qdrant DB from KB JSON
-|   +-- qdrant_db_v8/           # Vector DB (407 entries, voyage-code-3 1024d)
+|   +-- qdrant_db_forge/        # Vector DB (21,032 points, voyage-code-3 1024d) [not committed]
+|   +-- archive/
+|       +-- migrate_to_qdrant_v8.py  # Build Qdrant DB from KB JSON
+|       +-- darkhotel_knowledge_base_v7.json  # KB source (2,472 entries)
 |   +-- requirements.txt
 |   +-- .env                    # Config (not committed)
 |
 +-- frontend/
 |   +-- app/page.tsx            # React dashboard
+|   +-- app/components/         # AuditReport, SourceCodeViewer, FloatingCoins
 |   +-- package.json
 |
 +-- evaluation/
-|   +-- run_smartbugs_eval.py   # SmartBugs benchmark
-|   +-- run_top200_eval.py      # Top200 FP benchmark
-|   +-- run_ablation_*.py       # Ablation studies
+|   +-- runners/
+|       +-- run_smartbugs_eval.py   # SmartBugs benchmark (98 contracts)
+|       +-- run_ablation_smartbugs.py  # Ablation studies (4 conditions)
+|       +-- eval_utils.py
 |
 +-- docs/
     +-- SETUP.md                # This file
@@ -163,11 +167,11 @@ solc-select use 0.8.20
 
 ### Qdrant DB not found
 
-Knowledge Base is in `backend/qdrant_db_v8/`. If missing:
+Knowledge Base is in `backend/qdrant_db_forge/`. If missing:
 
 ```bash
 cd backend
-python migrate_to_qdrant_v8.py
+python archive/migrate_to_qdrant_v8.py
 ```
 
 ### Voyage API key errors
@@ -212,4 +216,4 @@ Upload this file to test the system.
 ---
 
 **Version:** 7.0
-**Last Updated:** 2026-04-01
+**Last Updated:** 2026-05-01

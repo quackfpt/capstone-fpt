@@ -36,7 +36,7 @@ Truoc khi bao loi, check:
 - [ ] Backend da start: `uvicorn main:app --reload --port 8000`
 - [ ] Frontend da start: `npm run dev`
 - [ ] API keys dung trong `backend/.env` (GOOGLE_CLOUD_PROJECT, VOYAGE_API_KEY)
-- [ ] Qdrant DB co tai `backend/qdrant_db_v8/`
+- [ ] Qdrant DB co tai `backend/qdrant_db_forge/`
 - [ ] File upload la `.sol` va khong rong
 
 ---
@@ -63,8 +63,8 @@ solc-select use 0.8.20
 
 ### 3. RAG khong tim thay ket qua
 
-- Kiem tra `qdrant_db_v8/` co ton tai
-- Neu mat, rebuild: `cd backend && python migrate_to_qdrant_v8.py`
+- Kiem tra `qdrant_db_forge/` co ton tai
+- Neu mat, rebuild: `cd backend && python archive/migrate_to_qdrant_v8.py`
 - Kiem tra VOYAGE_API_KEY con valid (can cho embedding + reranking)
 
 ### 4. LLM timeout hoac error
@@ -134,7 +134,7 @@ print(parser.get_summary(result))
 cd backend
 python -c "
 from smart_rag_system import SmartRAGSystem
-rag = SmartRAGSystem(persist_directory='./qdrant_db_v8')
+rag = SmartRAGSystem(persist_directory='./qdrant_db_forge')
 stats = rag.get_stats()
 print(stats)
 "
@@ -156,4 +156,4 @@ print(f'Warnings: {len(warnings)}')
 ---
 
 **Version:** 7.0
-**Last Updated:** 2026-04-01
+**Last Updated:** 2026-05-01
