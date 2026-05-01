@@ -1,0 +1,1117 @@
+PS D:\DarkHotel-CapstoneProject\DarkHotel-CapstoneProject\Capstone_FPT\DarkHotel-Capstone\evaluation> python run_top200_eval.py
+Discovered: 225 valid single-file contracts
+Skipped: 16 empty/tiny, 62 multi-file
+
+API Status: online
+Model: gemini-2.5-pro
+
+======================================================================
+DarkHotel GPTScan Top200 Evaluation (FPR)
+======================================================================
+Total contracts: 225
+Expected verdict: ALL SAFE
+API: http://localhost:8000/analyze
+Timeout: 600s per contract
+Detailed log: D:\DarkHotel-CapstoneProject\DarkHotel-CapstoneProject\Capstone_FPT\DarkHotel-Capstone\evaluation\top200_evaluation_log.txt
+======================================================================
+
+
+[1/225] MRC20.sol (531 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 143.9s
+
+[2/225] OwnedUpgradeabilityProxy.sol (208 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 88.2s
+
+[3/225] FetchToken.sol (1263 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 179.7s
+
+[4/225] Usdc.sol (493 lines, fantom)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 106.5s
+
+[5/225] AnyswapV3ERC20.sol (500 lines, fantom)
+  Expected: SAFE
+  ERROR: HTTP 500: {"detail":"Request to model 'rerank-2.5' failed. The max allowed tokens per submitted batch is 600000. Your batch has 618434 tokens after truncation. Please lower the number of tokens in the batch."}
+
+[6/225] ERC20Proxy.sol (1028 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 164.8s
+   -> FP: Integer Overflow (SWC-101)
+   -> FP: Integer Overflow (SWC-101)
+
+[7/225] TomoE.sol (755 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 202.2s
+   -> FP: Reentrancy (SWC-107)
+
+[8/225] AnyswapV5ERC20.sol (602 lines, fantom)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 192.8s
+   -> FP: Reentrancy (SWC-107)
+
+[9/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 78.4s
+
+[10/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 75.2s
+
+[11/225] YFI.sol (225 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 127.5s
+
+[12/225] IbcToken.sol (1051 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 149.3s
+
+[13/225] BAToken.sol (175 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 82.2s
+   -> FP: Integer Overflow (SWC-101)
+   -> FP: Integer Overflow (SWC-101)
+   -> FP: Integer Overflow (SWC-101)
+
+[14/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 94.3s
+
+[15/225] CakeToken.sol (1092 lines, bsc)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 183.1s
+   -> FP: Integer Overflow (SWC-101)
+   -> FP: Integer Overflow (SWC-101)
+
+[16/225] BEP20Cosmos.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 130.1s
+
+[17/225] Bora20v2.sol (3019 lines, poly)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 416.8s
+   -> FP: Unchecked Return Value (SWC-104)
+
+[18/225] MANAToken.sol (278 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 75.9s
+
+[19/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 73.9s
+
+[20/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 90.1s
+
+[21/225] OneInch.sol (1388 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 179.3s
+
+[22/225] OneInch.sol (1118 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 139.1s
+
+[23/225] MXToken.sol (147 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 118.6s
+   -> FP: Reentrancy (SWC-107)
+
+[24/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 89.7s
+
+[25/225] BridgeToken.sol (688 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 114.4s
+
+[26/225] BEP20Tezos.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 115.6s
+
+[27/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 76.6s
+
+[28/225] CrossChainCanonicalFRAX.sol (1782 lines, arbi)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 227.0s
+
+[29/225] AudiusAdminUpgradeabilityProxy.sol (268 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 71.9s
+
+[30/225] BitgetToken.sol (147 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 59.4s
+
+[31/225] CrossChainCanonicalFXS.sol (1779 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 227.2s
+
+[32/225] BitDAO.sol (1068 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 172.5s
+
+[33/225] BEP20DAI.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 125.3s
+
+[34/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 76.9s
+
+[35/225] BEP20Zcash.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 114.4s
+
+[36/225] UChildERC20Proxy.sol (172 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 76.0s
+
+[37/225] OwnedUpgradeabilityProxy.sol (204 lines, avax)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 103.3s
+   -> FP: Unvalidated Delegatecall Target (SWC-104)
+
+[38/225] WAVES.sol (308 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 124.5s
+   -> FP: Integer Overflow (SWC-101)
+   -> FP: Integer Overflow (SWC-101)
+
+[39/225] CurveDAO.sol (493 lines, fantom)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 111.8s
+
+[40/225] Uni.sol (582 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 95.6s
+
+[41/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 92.7s
+
+[42/225] AnyswapV5ERC20.sol (598 lines, avax)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 193.3s
+   -> FP: Unchecked Return Value (SWC-104)
+   -> FP: Reentrancy (SWC-107)
+
+[43/225] CrossChainCanonicalFXS.sol (1779 lines, avax)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 249.7s
+
+[44/225] BEP20Ethereum.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 112.7s
+
+[45/225] WBTC.sol (659 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 114.8s
+
+[46/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 77.2s
+
+[47/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 71.0s
+
+[48/225] BoraToken.sol (263 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 121.2s
+   -> FP: Unchecked Return Value (SWC-104)
+
+[49/225] UChildERC20Proxy.sol (182 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 77.7s
+
+[50/225] YFI.sol (493 lines, fantom)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 138.9s
+   -> FP: Replay Attack due to Cached Chain ID (SWC-107)
+
+[51/225] LEO.sol (730 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 140.6s
+   -> FP: Reentrancy (SWC-107)
+   -> FP: Unchecked Return Value (SWC-104)
+   -> FP: Reentrancy (SWC-107)
+
+[52/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 75.5s
+
+[53/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 82.9s
+
+[54/225] BEP20UpgradeableProxy.sol (503 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 94.4s
+
+[55/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 95.1s
+
+[56/225] BTC.sol (493 lines, fantom)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 113.7s
+
+[57/225] chiliZ.sol (645 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 133.9s
+
+[58/225] BTT.sol (1649 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 222.1s
+
+[59/225] TransparentUpgradeableProxy.sol (722 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 116.4s
+
+[60/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 72.9s
+
+[61/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 89.4s
+
+[62/225] BEP20Cardano.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 111.9s
+
+[63/225] ERC20Custom.sol (1292 lines, avax)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 176.9s
+
+[64/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 79.4s
+
+[65/225] BEP20BitcoinCash.sol (604 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 109.2s
+
+[66/225] BridgeToken.sol (674 lines, avax)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 117.0s
+
+[67/225] AdminUpgradeabilityProxy.sol (304 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 150.5s
+   -> FP: Reentrancy (SWC-107)
+
+[68/225] CrossChainCanonicalFRAX.sol (1779 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 239.4s
+
+[69/225] BscToken.sol (174 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 61.8s
+
+[70/225] WootradeNetwork.sol (111 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 77.0s
+   -> FP: Integer Overflow (SWC-101)
+
+[71/225] Band.sol (493 lines, fantom)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 131.0s
+
+[72/225] SXP.sol (805 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 182.0s
+
+[73/225] StandardToken.sol (235 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 70.0s
+
+[74/225] TrustWalletToken.sol (897 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 149.9s
+
+[75/225] FantomToken.sol (620 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 162.9s
+
+[76/225] AdminUpgradeabilityProxy.sol (304 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 152.6s
+   -> FP: Reentrancy (SWC-107)
+
+[77/225] TRX.sol (1648 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 213.7s
+
+[78/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 76.8s
+
+[79/225] LinkToken.sol (295 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 77.9s
+
+[80/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 93.0s
+
+[81/225] ChildERC20.sol (1521 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 193.0s
+
+[82/225] BEP20USDT.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 110.1s
+
+[83/225] BEP20EOS.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 123.3s
+
+[84/225] SNX.sol (493 lines, fantom)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 134.8s
+
+[85/225] BridgeToken.sol (803 lines, avax)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 172.1s
+   -> FP: Reentrancy (SWC-107)
+
+[86/225] MiniMeToken.sol (600 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 134.7s
+   -> FP: Reentrancy (SWC-107)
+   -> FP: Unchecked Return Value (SWC-104)
+   -> FP: Reentrancy (SWC-107)
+
+[87/225] SingularityNetToken.sol (1441 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 190.1s
+
+[88/225] Proxy.sol (36 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 68.5s
+
+[89/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 90.3s
+
+[90/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 72.7s
+
+[91/225] AdminUpgradeabilityProxy.sol (343 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 72.9s
+
+[92/225] BridgeToken.sol (740 lines, avax)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 154.6s
+   -> FP: Reentrancy (SWC-107)
+
+[93/225] AnyswapV5ERC20.sol (598 lines, fantom)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 190.2s
+   -> FP: Reentrancy (SWC-107)
+
+[94/225] GnosisToken.sol (151 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 75.5s
+   -> FP: Integer Overflow (SWC-101)
+   -> FP: Integer Overflow (SWC-101)
+
+[95/225] PepeToken.sol (632 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 98.9s
+
+[96/225] MaskToken.sol (646 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 111.8s
+
+[97/225] Aave.sol (493 lines, fantom)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 114.3s
+   -> FP: Replay Attack on Forked Chain (SWC-107)
+
+[98/225] SushiToken.sol (1037 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 234.5s
+
+[99/225] HoloToken.sol (275 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 61.1s
+
+[100/225] AdminUpgradeabilityProxy.sol (307 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 77.0s
+
+[101/225] HBToken.sol (123 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 127.8s
+   -> FP: Allowance Manipulation via Race Condition (SWC-101)
+
+[102/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 75.8s
+
+[103/225] IoTeXNetwork.sol (496 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 86.2s
+
+[104/225] BEP20Polkadot.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 108.1s
+
+[105/225] BridgeToken.sol (674 lines, avax)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 107.4s
+
+[106/225] BEP20Token.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 110.8s
+
+[107/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 88.1s
+
+[108/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 78.3s
+
+[109/225] JasmyCoin.sol (547 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 92.5s
+
+[110/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 89.7s
+
+[111/225] AnyswapV4ERC20.sol (586 lines, fantom)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 182.3s
+   -> FP: Unchecked Return Value (SWC-104)
+   -> FP: Reentrancy (SWC-107)
+
+[112/225] CrossChainCanonicalFXS.sol (1779 lines, fantom)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 222.0s
+
+[113/225] MaticToken.sol (494 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 140.1s
+
+[114/225] NewGolemNetworkToken.sol (650 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 137.3s
+   -> FP: Replay Attack due to Constant DOMAIN_SEPARATOR (SWC-107)
+
+[115/225] ANKRToken.sol (259 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 70.8s
+
+[116/225] AnyswapV3ERC20.sol (500 lines, fantom)
+  Expected: SAFE
+  ERROR: HTTP 500: {"detail":"Request to model 'rerank-2.5' failed. The max allowed tokens per submitted batch is 600000. Your batch has 618434 tokens after truncation. Please lower the number of tokens in the batch."}
+
+[117/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 73.0s
+
+[118/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 78.3s
+
+[119/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 83.7s
+
+[120/225] BridgeToken.sol (740 lines, avax)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 145.9s
+   -> FP: Reentrancy (SWC-107)
+
+[121/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 78.4s
+
+[122/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 74.9s
+
+[123/225] SwipeToken.sol (493 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 105.4s
+   -> FP: Unchecked Return Value (SWC-104)
+
+[124/225] Dai.sol (493 lines, fantom)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 96.6s
+
+[125/225] IbcToken.sol (1051 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 138.1s
+
+[126/225] AdminUpgradeabilityProxy.sol (294 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 136.9s
+   -> FP: Reentrancy (SWC-107)
+
+[127/225] BridgeToken.sol (740 lines, avax)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 145.2s
+   -> FP: Reentrancy (SWC-107)
+
+[128/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 71.9s
+
+[129/225] DFI.sol (1351 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 187.3s
+
+[130/225] BEP20BitcoinCash.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 111.1s
+
+[131/225] wBeldex.sol (666 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 117.1s
+
+[132/225] CrossChainCanonicalFRAX.sol (1779 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 221.2s
+
+[133/225] IbcToken.sol (1051 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 135.8s
+
+[134/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 84.0s
+
+[135/225] TokenMintERC20Token.sol (493 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 84.0s
+
+[136/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 84.0s
+
+[137/225] OceanToken.sol (803 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 158.3s
+
+[138/225] TransparentUpgradeableProxy.sol (703 lines, avax)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 107.0s
+
+[139/225] BridgeToken.sol (740 lines, avax)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 111.6s
+
+[140/225] BridgeToken.sol (688 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 111.0s
+
+[141/225] AnyswapV5ERC20.sol (598 lines, fantom)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 172.2s
+   -> FP: Reentrancy (SWC-107)
+
+[142/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 76.6s
+
+[143/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 88.4s
+
+[144/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 73.0s
+
+[145/225] BridgeToken.sol (690 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 109.4s
+
+[146/225] CrossChainCanonicalFXS.sol (1782 lines, arbi)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 215.8s
+
+[147/225] DSToken.sol (474 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 123.1s
+
+[148/225] CroToken.sol (637 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 147.5s
+
+[149/225] FiatTokenProxy.sol (329 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 115.5s
+   -> FP: Reentrancy (SWC-107)
+
+[150/225] ANTv2.sol (216 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 122.6s
+
+[151/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 93.9s
+
+[152/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 89.5s
+
+[153/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 80.5s
+
+[154/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 75.8s
+
+[155/225] CoinToken.sol (914 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 347.4s
+   -> FP: Reentrancy (SWC-107)
+
+[156/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 88.7s
+
+[157/225] BEP20BandProtocol.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 106.9s
+
+[158/225] Sushi.sol (493 lines, fantom)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 129.3s
+
+[159/225] AppProxyUpgradeable.sol (392 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 104.2s
+
+[160/225] FetchToken.sol (1259 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 160.6s
+
+[161/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 69.0s
+
+[162/225] ChainLink.sol (493 lines, fantom)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 113.9s
+   -> FP: Signature Replay on Fork (SWC-107)
+
+[163/225] NexoToken.sol (475 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 101.2s
+
+[164/225] CrowdsaleToken.sol (599 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 143.6s
+   -> FP: Reentrancy (SWC-107)
+   -> FP: Reentrancy (SWC-107)
+
+[165/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 72.2s
+
+[166/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 88.6s
+
+[167/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 91.9s
+
+[168/225] BNB.sol (146 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 75.1s
+
+[169/225] FiatTokenProxy.sol (386 lines, avax)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 73.7s
+
+[170/225] BalancerGovernanceToken.sol (1494 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 219.9s
+   -> FP: Reentrancy (SWC-107)
+   -> FP: Integer Overflow (SWC-101)
+
+[171/225] BandToken.sol (514 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 123.4s
+
+[172/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 90.9s
+
+[173/225] AXSToken.sol (213 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 95.2s
+
+[174/225] WBNB.sol (744 lines, bsc)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 61.6s
+   -> FP: Integer Overflow/Underflow (SWC-101)
+
+[175/225] LRC_v2.sol (275 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 75.0s
+
+[176/225] AnyswapV5ERC20.sol (602 lines, bsc)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 175.0s
+   -> FP: Reentrancy (SWC-107)
+
+[177/225] BridgeToken.sol (740 lines, avax)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 133.8s
+   -> FP: Reentrancy (SWC-107)
+
+[178/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 86.4s
+
+[179/225] Comp.sol (301 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 89.0s
+
+[180/225] ProxyERC20.sol (505 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 115.8s
+   -> FP: Unchecked Return Value (SWC-104)
+   -> FP: Unchecked Return Value (SWC-104)
+   -> FP: Unchecked Return Value (SWC-104)
+
+[181/225] ONUSToken.sol (651 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 111.1s
+
+[182/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 71.1s
+
+[183/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 74.9s
+
+[184/225] BTT.sol (1649 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 221.9s
+
+[185/225] Tribe.sol (386 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 101.4s
+   -> FP: Integer Overflow / Unsafe Type Cast (SWC-101)
+
+[186/225] CoinToken.sol (1157 lines, bsc)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 305.8s
+   -> FP: Reentrancy (SWC-107)
+
+[187/225] GraphToken.sol (962 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 147.6s
+   -> FP: Signature Replay due to Cached Domain Separator (SWC-107)
+
+[188/225] pONT.sol (576 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 95.3s
+
+[189/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 86.0s
+
+[190/225] TRX.sol (1648 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 221.1s
+
+[191/225] CrossChainCanonicalFRAX.sol (1779 lines, avax)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 225.4s
+
+[192/225] SafePalToken.sol (559 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 94.7s
+
+[193/225] BridgeToken.sol (740 lines, avax)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 145.6s
+   -> FP: Reentrancy (SWC-107)
+
+[194/225] Vyper_contract.sol (374 lines, eth)
+  Expected: SAFE
+  ERROR: HTTP 500: {"detail":"400: File does not appear to be a valid Solidity source file."}
+
+[195/225] AnyswapV4ERC20.sol (606 lines, avax)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 164.0s
+   -> FP: Reentrancy (SWC-107)
+
+[196/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 77.5s
+
+[197/225] NXMToken.sol (444 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 92.9s
+
+[198/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 78.2s
+
+[199/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 75.7s
+
+[200/225] TetherToken.sol (447 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 180.0s
+   -> FP: Unchecked Return Value (SWC-104)
+
+[201/225] EURSToken.sol (887 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 182.3s
+
+[202/225] CrossChainCanonicalFRAX.sol (1779 lines, fantom)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 222.1s
+
+[203/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 75.4s
+
+[204/225] InjectiveToken.sol (704 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 114.5s
+
+[205/225] ZRXToken.sol (140 lines, eth)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 104.7s
+   -> FP: Allowance Manipulation via `approve` Race Condition (SWC-101)
+
+[206/225] CrossChainCanonicalFXS.sol (1779 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 225.8s
+
+[207/225] GateChainToken.sol (192 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 79.0s
+
+[208/225] AVABBC.sol (628 lines, avax)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 121.2s
+
+[209/225] BABBC.sol (628 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 117.3s
+
+[210/225] WABBC.sol (628 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 132.7s
+
+[211/225] FABBC.sol (628 lines, fantom)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 128.7s
+
+[212/225] MABBC.sol (628 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 137.0s
+
+[213/225] BEP20Token.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 134.6s
+
+[214/225] BridgeToken.sol (690 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 130.8s
+
+[215/225] ACH.sol (652 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 192.5s
+
+[216/225] AnkrBEP20Token.sol (592 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 138.0s
+
+[217/225] IMXToken.sol (750 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 136.0s
+
+[218/225] ENJToken.sol (488 lines, eth)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 162.9s
+
+[219/225] UChildERC20Proxy.sol (168 lines, poly)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 78.2s
+
+[220/225] BEP20LINK.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 114.7s
+
+[221/225] BEP20UpgradeableProxy.sol (479 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 91.5s
+
+[222/225] GMX.sol (817 lines, arbi)
+  Expected: SAFE
+  Predicted: VULNERABLE | FALSE POSITIVE | 197.3s
+   -> FP: Reentrancy (SWC-107)
+   -> FP: Reentrancy (SWC-107)
+
+[223/225] TransparentUpgradeableProxy.sol (684 lines, arbi)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 134.7s
+
+[224/225] BEP20Ontology.sol (600 lines, bsc)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 120.1s
+
+[225/225] TransparentUpgradeableProxy.sol (490 lines, arbi)
+  Expected: SAFE
+  Predicted: SAFE | CORRECT | 97.8s
+
+======================================================================
+PART 1 — FALSE POSITIVE RESULTS
+======================================================================
+
+All contracts are SAFE (production DeFi, audited):
+  Correctly identified SAFE (TN):  175/225
+  False Positives (FP):            47/225
+  Errors:                          3/225
+
+  Specificity (True Negative Rate): 77.8%
+  False Positive Rate:              20.9%
+
+Avg Analysis Time: 123.1s
+Total Time: 472.6 min
+
+======================================================================
+PART 2 — PER-CHAIN BREAKDOWN
+======================================================================
+  arbi      : 4/5 correct (80%), 1 FP, 0 errors
+  avax      : 9/18 correct (50%), 9 FP, 0 errors
+  bsc       : 57/61 correct (93%), 4 FP, 0 errors
+  eth       : 52/78 correct (67%), 25 FP, 1 errors
+  fantom    : 10/19 correct (53%), 7 FP, 2 errors
+  poly      : 43/44 correct (98%), 1 FP, 0 errors
+
+======================================================================
+PART 3 — PER-PRAGMA VERSION BREAKDOWN
+======================================================================
+  0.4.x     :  37 contracts, 20/37 correct (54%), FPR: 46%
+  0.5.x     :  44 contracts, 41/44 correct (93%), FPR: 7%
+  0.6.x     :  89 contracts, 82/89 correct (92%), FPR: 8%
+  0.7.x     :   1 contracts, 0/1 correct (0%), FPR: 100%
+  0.8.x     :  52 contracts, 32/52 correct (62%), FPR: 35%
+  unknown   :   2 contracts, 0/2 correct (0%), FPR: 50%
+
+======================================================================
+PART 4 — FALSE POSITIVE DETAILS
+======================================================================
+
+    Allowance Manipulation via Race Condition — 1 false positives:
+      HBToken.sol (0x6f259637dcd74c767781e37bc6133cd6a68aa161_eth)
+
+    Allowance Manipulation via `approve` Race Condition — 1 false positives:
+      ZRXToken.sol (0xe41d2489571d322189246dafa5ebde1f4699f498_eth)
+
+    Integer Overflow — 13 false positives:
+      ERC20Proxy.sol (0x056fd409e1d7a124bd7017459dfea2f387b6d5cd_eth)
+      ERC20Proxy.sol (0x056fd409e1d7a124bd7017459dfea2f387b6d5cd_eth)
+      BAToken.sol (0x0d8775f648430679a709e98d2b0cb6250d2887ef_eth)
+      BAToken.sol (0x0d8775f648430679a709e98d2b0cb6250d2887ef_eth)
+      BAToken.sol (0x0d8775f648430679a709e98d2b0cb6250d2887ef_eth)
+      CakeToken.sol (0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82_bsc)
+      CakeToken.sol (0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82_bsc)
+      WAVES.sol (0x1cf4592ebffd730c7dc92c1bdffdfc3b9efcf29a_eth)
+      WAVES.sol (0x1cf4592ebffd730c7dc92c1bdffdfc3b9efcf29a_eth)
+      WootradeNetwork.sol (0x4691937a7508860f876c9c0a2a617e7d9e945d4b_eth)
+      GnosisToken.sol (0x6810e776880c02933d47db1b9fc05908e5386b96_eth)
+      GnosisToken.sol (0x6810e776880c02933d47db1b9fc05908e5386b96_eth)
+      BalancerGovernanceToken.sol (0xba100000625a3754423978a60c9317c58a424e3d_eth)
+
+    Integer Overflow / Unsafe Type Cast — 1 false positives:
+      Tribe.sol (0xc7283b66eb1eb5fb86327f08e1b5816b0720212b_eth)
+
+    Integer Overflow/Underflow — 1 false positives:
+      WBNB.sol (0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c_bsc)
+
+    Reentrancy — 30 false positives:
+      TomoE.sol (0x05d3606d5c81eb9b7b18530995ec9b29da05faba_eth)
+      AnyswapV5ERC20.sol (0x0615dbba33fe61a31c7ed131bda6655ed76748b1_fantom)
+      MXToken.sol (0x11eef04c884e24d9b7b4760e7476d06ddf797f36_eth)
+      AnyswapV5ERC20.sol (0x20cf1b6e9d856321ed4686877cf4538f2c84b4de_avax)
+      LEO.sol (0x2af5d2ad76741191d15dfe7bf6ac92d4bd912ca3_eth)
+      LEO.sol (0x2af5d2ad76741191d15dfe7bf6ac92d4bd912ca3_eth)
+      AdminUpgradeabilityProxy.sol (0x45804880de22913dafe09f4980848ece6ecbaf78_eth)
+      AdminUpgradeabilityProxy.sol (0x4fabb145d64652a948d72533023f6e7a623c7c53_eth)
+      BridgeToken.sol (0x5947bb275c521040051d82396192181b413227a3_avax)
+      MiniMeToken.sol (0x5a98fcbea516cf06857215779fd812ca3bef1b32_eth)
+      MiniMeToken.sol (0x5a98fcbea516cf06857215779fd812ca3bef1b32_eth)
+      BridgeToken.sol (0x63a72806098bd3d9520cc43356dd78afe5d386d9_avax)
+      AnyswapV5ERC20.sol (0x6626c47c00f1d87902fc13eecfac3ed06d5e8d8a_fantom)
+      AnyswapV4ERC20.sol (0x7c598c96d02398d89fbcb9d41eab3df0c16f227d_fantom)
+      BridgeToken.sol (0x8a0cac13c7da965a312f08ea4229c37869e85cb9_avax)
+      AdminUpgradeabilityProxy.sol (0x8e870d67f660d95d5be530380d0ec0bd388289e1_eth)
+      BridgeToken.sol (0x8ebaf22b6f053dffeaf46f4dd9efa95d89ba8580_avax)
+      AnyswapV5ERC20.sol (0x9879abdea01a879644185341f7af7d8343556b7a_fantom)
+      FiatTokenProxy.sol (0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48_eth)
+      CoinToken.sol (0xac57de9c1a09fec648e93eb98875b212db0d460b_eth)
+      ... and 10 more
+
+    Replay Attack due to Cached Chain ID — 1 false positives:
+      YFI.sol (0x29b0da86e484e1c0029b56e817912d778ac0ec69_fantom)
+
+    Replay Attack due to Constant DOMAIN_SEPARATOR — 1 false positives:
+      NewGolemNetworkToken.sol (0x7dd9c5cba05e151c895fde1cf355c9a1d5da6429_eth)
+
+    Replay Attack on Forked Chain — 1 false positives:
+      Aave.sol (0x6a07a792ab2965c72a5b8088d3a069a7ac3a993b_fantom)
+
+    Signature Replay due to Cached Domain Separator — 1 false positives:
+      GraphToken.sol (0xc944e90c64b2c07662a292be6244bdf05cda44a7_eth)
+
+    Signature Replay on Fork — 1 false positives:
+      ChainLink.sol (0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8_fantom)
+
+    Unchecked Return Value — 11 false positives:
+      Bora20v2.sol (0x0ef39e52704ad52e2882bbfa6781167e1b6c4510_poly)
+      AnyswapV5ERC20.sol (0x20cf1b6e9d856321ed4686877cf4538f2c84b4de_avax)
+      BoraToken.sol (0x26fb86579e371c7aedc461b2ddef0a8628c93d3b_eth)
+      LEO.sol (0x2af5d2ad76741191d15dfe7bf6ac92d4bd912ca3_eth)
+      MiniMeToken.sol (0x5a98fcbea516cf06857215779fd812ca3bef1b32_eth)
+      AnyswapV4ERC20.sol (0x7c598c96d02398d89fbcb9d41eab3df0c16f227d_fantom)
+      SwipeToken.sol (0x8ce9137d39326ad0cd6491fb5cc0cba0e089b6a9_eth)
+      ProxyERC20.sol (0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f_eth)
+      ProxyERC20.sol (0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f_eth)
+      ProxyERC20.sol (0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f_eth)
+      TetherToken.sol (0xdac17f958d2ee523a2206206994597c13d831ec7_eth)
+
+    Unvalidated Delegatecall Target — 1 false positives:
+      OwnedUpgradeabilityProxy.sol (0x1c20e891bab6b1727d14da358fae2984ed9b59eb_avax)
+
+======================================================================
+SUMMARY
+======================================================================
+  Dataset:              GPTScan Top200 (225 single-file contracts)
+  Specificity:          175/225 = 77.8%
+  False Positive Rate:  47/225 = 20.9%
+  Errors:               3/225
+  Avg Analysis Time:    123.1s
+  Total Time:           472.6 min
+======================================================================
+
+Results saved to: D:\DarkHotel-CapstoneProject\DarkHotel-CapstoneProject\Capstone_FPT\DarkHotel-Capstone\evaluation\top200_evaluation_results.json
+Detailed log saved to: D:\DarkHotel-CapstoneProject\DarkHotel-CapstoneProject\Capstone_FPT\DarkHotel-Capstone\evaluation\top200_evaluation_log.txt
+Checkpoint cleaned up (evaluation complete)
+======================================================================

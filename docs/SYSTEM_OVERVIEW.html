@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DarkHotel — System Overview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f4f8;
+      padding: 32px 24px;
+      color: #1a2340;
+    }
+
+    .page {
+      background: #fff;
+      border-radius: 12px;
+      border: 2px solid #6b8cff;
+      padding: 32px 36px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* two-column layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    /* ── section block ── */
+    .section { margin-bottom: 28px; }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    thead tr {
+      background: #1e293b;
+      color: #fff;
+    }
+
+    thead th {
+      padding: 8px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    tbody tr { border-bottom: 1px solid #e2e8f0; }
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody td {
+      padding: 7px 14px;
+      vertical-align: middle;
+    }
+
+    tbody td:first-child { font-weight: 600; color: #334155; }
+    tbody td:last-child  { color: #475569; }
+
+    /* ── code block ── */
+    .code-block {
+      background: #1e293b;
+      border-radius: 8px;
+      padding: 18px 20px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+      overflow-x: auto;
+    }
+
+    /* each line = flex row */
+    .tl { display: flex; align-items: baseline; }
+
+    /* prefix: tree chars + spacing — keep as-is */
+    .tp { white-space: pre; flex-shrink: 0; color: #64748b; }
+
+    /* filename column — fixed width so comment always aligns */
+    .tn { flex: 0 0 26ch; white-space: pre; }
+
+    /* comment */
+    .tc { color: #94a3b8; white-space: pre; }
+
+    /* colors */
+    .dir  { color: #7dd3fc; font-weight: 600; }
+    .file { color: #e2e8f0; }
+    .hi   { color: #86efac; }
+    .nw   { color: #fde68a; }
+
+    /* ── KB table highlight ── */
+    .kb-key   { font-weight: 600; color: #2563eb !important; }
+    .kb-value { color: #1e293b !important; }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="two-col">
+
+    <!-- ════ LEFT COLUMN ════ -->
+    <div>
+
+      <!-- BACKEND -->
+      <div class="section">
+        <div class="section-title">Backend</div>
+        <table>
+          <thead>
+            <tr><th>Thành phần</th><th>Công nghệ</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Web Server</td><td>FastAPI 0.128 (Python 3.10+)</td></tr>
+            <tr><td>LLM</td><td>Gemini 2.5 Pro (Google Vertex AI)</td></tr>
+            <tr><td>Embedding</td><td>voyage-code-3 (Voyage AI API, 1024d)</td></tr>
+            <tr><td>Reranker</td><td>voyage-rerank-2.5 (Voyage AI API)</td></tr>
+            <tr><td>Vector DB</td><td>Qdrant local (qdrant_db_forge/)</td></tr>
+            <tr><td>Static Analysis</td><td>Slither (Trail of Bits)</td></tr>
+            <tr><td>AST Parser</td><td>tree-sitter (primary) + regex fallback</td></tr>
+            <tr><td>Async</td><td>asyncio + gather()</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FRONTEND -->
+      <div class="section">
+        <div class="section-title">Frontend</div>
+        <table>
+          <thead>
+            <tr><th>Thành phần</th><th>Công nghệ</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Framework</td><td>Next.js 16.1.1 + React 19.2.3</td></tr>
+            <tr><td>Language</td><td>TypeScript 5</td></tr>
+            <tr><td>Styling</td><td>Tailwind CSS 4</td></tr>
+            <tr><td>Icons</td><td>lucide-react 0.562</td></tr>
+            <tr><td>Markdown</td><td>react-markdown 10.1</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div><!-- /left -->
+
+    <!-- ════ RIGHT COLUMN ════ -->
+    <div>
+
+      <!-- CẤU TRÚC DỰ ÁN -->
+      <div class="section">
+        <div class="section-title">Cấu trúc dự án</div>
+        <div class="code-block">
+<div class="tl"><span class="tn dir">DarkHotel-Capstone/</span></div>
+<div class="tl"><span class="tp">├── </span><span class="tn dir">backend/</span></div>
+<div class="tl"><span class="tp">│   ├── </span><span class="tn file">main.py</span><span class="tc"># Pipeline 6 bước</span></div>
+<div class="tl"><span class="tp">│   ├── </span><span class="tn file">ast_parser.py</span><span class="tc"># tree-sitter + regex</span></div>
+<div class="tl"><span class="tp">│   ├── </span><span class="tn file">llm_analyzer.py</span><span class="tc"># Gemini 2.5 Pro + CoT</span></div>
+<div class="tl"><span class="tp">│   ├── </span><span class="tn hi">smart_rag_system.py</span><span class="tc"># RAG + voyage + Qdrant</span></div>
+<div class="tl"><span class="tp">│   ├── </span><span class="tn file">slither_smart_wrapper.py</span><span class="tc"># Static analysis</span></div>
+<div class="tl"><span class="tp">│   └── </span><span class="tn nw">qdrant_db_forge/</span><span class="tc"># 21,032 pts (1024d)</span></div>
+<div class="tl"><span class="tp">├── </span><span class="tn dir">frontend/</span></div>
+<div class="tl"><span class="tp">│   └── </span><span class="tn dir">app/</span></div>
+<div class="tl"><span class="tp">│       └── </span><span class="tn file">page.tsx</span><span class="tc"># Dashboard (~27 KB)</span></div>
+<div class="tl"><span class="tp">├── </span><span class="tn dir">evaluation/</span></div>
+<div class="tl"><span class="tp">│   ├── </span><span class="tn file">run_smartbugs_eval.py</span></div>
+<div class="tl"><span class="tp">│   ├── </span><span class="tn file">run_ablation_smartbugs.py</span></div>
+<div class="tl"><span class="tp">│   └── </span><span class="tn file">analyze_smartbugs_metrics.py</span></div>
+<div class="tl"><span class="tp">└── </span><span class="tn dir">docs/</span></div>
+        </div>
+      </div>
+
+      <!-- KNOWLEDGE BASE -->
+      <div class="section">
+        <div class="section-title">Knowledge Base</div>
+        <table>
+          <thead>
+            <tr><th>Thuộc tính</th><th>Giá trị</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="kb-key">Nguồn 1</td>
+              <td class="kb-value">FORGE-Curated (208 audit reports)</td>
+            </tr>
+            <tr>
+              <td class="kb-key">Nguồn 2</td>
+              <td class="kb-value">DAppSCAN audits-with-reasons (2,472 entries)</td>
+            </tr>
+            <tr>
+              <td class="kb-key">Tổng vector</td>
+              <td class="kb-value">21,032 points (2 collections)</td>
+            </tr>
+            <tr>
+              <td class="kb-key">Embedding</td>
+              <td class="kb-value">voyage-code-3 — 1024 dim</td>
+            </tr>
+            <tr>
+              <td class="kb-key">Storage</td>
+              <td class="kb-value">Qdrant local (SQLite backend)</td>
+            </tr>
+            <tr>
+              <td class="kb-key">Vuln types</td>
+              <td class="kb-value">SWC-107, SWC-101, SWC-104</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div><!-- /right -->
+
+  </div><!-- /two-col -->
+</div><!-- /page -->
+</body>
+</html>

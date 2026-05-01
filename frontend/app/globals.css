@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ===== LIGHT THEME ===== */
+:root {
+  --surface: #f5f5f7;
+  --surface-alt: #ecedf0;
+  --panel: #ffffff;
+  --panel-alt: #f9fafb;
+  --on-surface: #1a1a2e;
+  --on-surface-sec: #3d3d5c;
+  --on-surface-muted: #8888a0;
+  --outline: #d8d8e0;
+  --outline-dim: rgba(0, 0, 0, 0.06);
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-subtle: rgba(79, 70, 229, 0.06);
+  --accent-glow: rgba(79, 70, 229, 0.15);
+
+  --safe-bg: #e8faf0;
+  --safe-border: #6dd9a0;
+  --safe-text: #0d7a42;
+  --safe-icon-bg: rgba(13, 122, 66, 0.1);
+  --vuln-bg: #fce8e8;
+  --vuln-border: #f07070;
+  --vuln-text: #c42020;
+  --vuln-icon-bg: rgba(196, 32, 32, 0.1);
+
+  --code-bg: #f4f5f7;
+  --code-hl-bg: rgba(239, 68, 68, 0.1);
+  --code-hl-border: #e53e3e;
+
+  --gradient-page: #f5f5f7;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 4px 14px rgba(0,0,0,0.04);
+  --shadow-card-hover: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* ===== DARK THEME ===== */
+.dark {
+  --surface: #080b12;
+  --surface-alt: #0d1118;
+  --panel: rgba(17, 22, 35, 0.85);
+  --panel-alt: rgba(13, 18, 28, 0.85);
+  --on-surface: #e4e4ec;
+  --on-surface-sec: #9ca3b4;
+  --on-surface-muted: #5a6278;
+  --outline: rgba(56, 189, 248, 0.12);
+  --outline-dim: rgba(56, 189, 248, 0.06);
+  --accent: #22d3ee;
+  --accent-hover: #67e8f9;
+  --accent-subtle: rgba(34, 211, 238, 0.08);
+  --accent-glow: rgba(34, 211, 238, 0.2);
+
+  --safe-bg: rgba(16, 185, 129, 0.08);
+  --safe-border: rgba(52, 211, 153, 0.3);
+  --safe-text: #34d399;
+  --safe-icon-bg: rgba(52, 211, 153, 0.12);
+  --vuln-bg: rgba(239, 68, 68, 0.08);
+  --vuln-border: rgba(248, 113, 113, 0.3);
+  --vuln-text: #f87171;
+  --vuln-icon-bg: rgba(248, 113, 113, 0.12);
+
+  --code-bg: rgba(8, 11, 18, 0.9);
+  --code-hl-bg: rgba(248, 113, 113, 0.1);
+  --code-hl-border: #f87171;
+
+  --gradient-page: radial-gradient(ellipse at 20% 0%, rgba(34,211,238,0.06) 0%, transparent 50%),
+                    radial-gradient(ellipse at 80% 100%, rgba(99,102,241,0.04) 0%, transparent 50%),
+                    linear-gradient(180deg, #080b12 0%, #0d1118 100%);
+  --shadow-card: 0 0 0 1px var(--outline), 0 2px 8px rgba(0,0,0,0.4);
+  --shadow-card-hover: 0 0 0 1px rgba(34,211,238,0.2), 0 4px 20px rgba(0,0,0,0.5), 0 0 30px rgba(34,211,238,0.05);
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-panel: var(--panel);
+  --color-panel-alt: var(--panel-alt);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-sec: var(--on-surface-sec);
+  --color-on-surface-muted: var(--on-surface-muted);
+  --color-outline: var(--outline);
+  --color-outline-dim: var(--outline-dim);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-subtle: var(--accent-subtle);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--gradient-page);
+  color: var(--on-surface);
+  min-height: 100vh;
+}
+
+html.font-sm { font-size: 13px; }
+html.font-md { font-size: 15px; }
+html.font-lg { font-size: 17px; }
+
+/* ===== CARD ===== */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--outline);
+  border-radius: 0.875rem;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+.card-alt {
+  background: var(--panel-alt);
+  border: 1px solid var(--outline);
+  border-radius: 0.875rem;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ===== BUTTON ===== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0.625rem;
+  transition: all 0.2s;
+  box-shadow: 0 0 0 0 transparent;
+  border: none;
+}
+.btn-primary:hover {
+  box-shadow: 0 0 24px var(--accent-glow);
+  filter: brightness(1.1);
+}
+.btn-primary:disabled { opacity: 0.4; box-shadow: none; filter: none; }
+
+/* ===== SCROLLBAR ===== */
+.dark ::-webkit-scrollbar { width: 5px; height: 5px; }
+.dark ::-webkit-scrollbar-track { background: transparent; }
+.dark ::-webkit-scrollbar-thumb { background: rgba(56,189,248,0.15); border-radius: 4px; }
+.dark ::-webkit-scrollbar-thumb:hover { background: rgba(56,189,248,0.3); }
+
+/* ===== SEVERITY GLOW (dark only) ===== */
+.dark .sev-critical { box-shadow: 0 0 10px rgba(248,113,113,0.4), 0 0 2px rgba(248,113,113,0.6); }
+.dark .sev-high { box-shadow: 0 0 10px rgba(248,113,113,0.35), 0 0 2px rgba(248,113,113,0.5); }
+
+/* ===== EMPTY STATE PULSE ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.empty-icon {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ===== FLOATING COINS ===== */
+@keyframes coinFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  25% { transform: translateY(-12px) rotate(5deg) scale(1.03); }
+  50% { transform: translateY(-6px) rotate(-3deg) scale(0.97); }
+  75% { transform: translateY(-14px) rotate(4deg) scale(1.02); }
+}
+/* Hide coins on small screens */
+@media (max-width: 1024px) {
+  .floating-coins { display: none; }
+}
+/* Hide coins in light mode (they look odd on white bg) */
+:root .floating-coins { display: none; }
+.dark .floating-coins { display: block; }
+
+/* Print handled via iframe — no @media print needed */

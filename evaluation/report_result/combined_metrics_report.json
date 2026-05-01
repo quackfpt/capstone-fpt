@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-02T23:20:57.562770",
+    "description": "Cross-dataset combined metrics (SmartBugs + Top200)",
+    "caveat": "F1 is cross-dataset estimate: TP/FN from SmartBugs, FP/TN from Top200",
+    "methodology": "Same approach as GPTScan (ISSTA 2024)"
+  },
+  "sources": {
+    "smartbugs": {
+      "file": "D:\\DarkHotel-CapstoneProject\\Capstone_FPT\\DarkHotel-Capstone\\evaluation\\smartbugs_evaluation_results.json",
+      "tp": 97,
+      "fn": 0,
+      "total_vulnerable": 97,
+      "recall": 1.0
+    },
+    "top200": {
+      "file": "NOT AVAILABLE",
+      "fp": 0,
+      "tn": 0,
+      "total_safe": 0,
+      "specificity": 0
+    }
+  },
+  "combined": {
+    "confusion_matrix": {
+      "tp": 97,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "total": 97
+    },
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "f2_score": 1.0,
+      "specificity": 0,
+      "false_positive_rate": 0,
+      "false_negative_rate": 0.0,
+      "accuracy": 1.0,
+      "mcc": 0
+    }
+  },
+  "per_type_recall": {
+    "SWC-107": {
+      "label": "Reentrancy",
+      "detected": 30,
+      "total": 31,
+      "recall": 0.9677
+    },
+    "SWC-101": {
+      "label": "Integer Overflow/Underflow",
+      "detected": 15,
+      "total": 15,
+      "recall": 1.0
+    },
+    "SWC-104": {
+      "label": "Unchecked Return Value",
+      "detected": 51,
+      "total": 51,
+      "recall": 1.0
+    }
+  },
+  "false_positive_types": {}
+}

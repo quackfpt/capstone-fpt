@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Tech Stack – DarkHotel</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 36px 40px;
+      width: 100%;
+      max-width: 1100px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a2340;
+      letter-spacing: 1px;
+      margin-bottom: 32px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* ── section card ── */
+    .section {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .section-header .icon { font-size: 1.3rem; }
+
+    /* FRONTEND – blue */
+    .frontend { background: #dbeafe; }
+    .frontend .section-header { background: #bfdbfe; color: #1e3a8a; }
+    .frontend .badge { background: #93c5fd; color: #1e3a8a; }
+
+    /* BACKEND – green */
+    .backend { background: #dcfce7; }
+    .backend .section-header { background: #bbf7d0; color: #14532d; }
+    .backend .badge-green  { background: #16a34a; color: #fff; }
+    .backend .badge-tob    { background: #15803d; color: #fff; }
+    .backend .badge-multi  { background: #15803d; color: #fff; }
+
+    /* AI/RAG – purple */
+    .airag { background: #f3e8ff; }
+    .airag .section-header { background: #e9d5ff; color: #4a1d96; }
+    .airag .badge { background: #c084fc; color: #3b0764; }
+
+    /* DATABASE – teal */
+    .database { background: #ccfbf1; }
+    .database .section-header { background: #99f6e4; color: #134e4a; }
+    .database .badge { background: #2dd4bf; color: #134e4a; }
+
+    /* ── table inside each section ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    tr { border-top: 1px solid rgba(0,0,0,0.06); }
+    tr:first-child { border-top: none; }
+
+    td {
+      padding: 9px 16px;
+      font-size: 0.88rem;
+      vertical-align: middle;
+    }
+
+    td:first-child {
+      font-weight: 600;
+      color: #374151;
+      white-space: nowrap;
+    }
+
+    td:nth-child(2) {
+      color: #4b5563;
+    }
+
+    td:last-child {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ── badge pill ── */
+    .badge, .badge-green, .badge-tob, .badge-multi {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    /* removed row – strikethrough style */
+    .removed td {
+      color: #9ca3af !important;
+      text-decoration: line-through;
+      font-style: italic;
+    }
+
+    /* new row – highlight */
+    .new-item td:first-child::after {
+      content: " ★";
+      color: #f59e0b;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>SYSTEM TECH STACK</h1>
+
+  <div class="grid">
+
+    <!-- ══ FRONTEND ══ -->
+    <div class="section frontend">
+      <div class="section-header">
+        <span class="icon">⚛️</span>
+        <span>FRONTEND</span>
+      </div>
+      <table>
+        <tr>
+          <td>Next.js 16.1.1</td>
+          <td>Main UI framework (App Router)</td>
+          <td><span class="badge"></span></td>
+        </tr>
+        <tr>
+          <td>React 19.2.3</td>
+          <td>UI Library</td>
+          <td><span class="badge"></span></td>
+        </tr>
+        <tr>
+          <td>TypeScript 5</td>
+          <td>Language</td>
+          <td><span class="badge"></span></td>
+        </tr>
+        <tr>
+          <td>Tailwind CSS 4</td>
+          <td>Styling</td>
+          <td><span class="badge"></span></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- ══ BACKEND ══ -->
+    <div class="section backend">
+      <div class="section-header">
+        <span class="icon">🖥️</span>
+        <span>BACKEND</span>
+      </div>
+      <table>
+        <tr>
+          <td>FastAPI 0.128.0</td>
+          <td>REST API + async processing</td>
+          <td><span class="badge-green">Python 3.10+</span></td>
+        </tr>
+        <tr>
+          <td>Slither</td>
+          <td>Static analysis – AST &amp; CFG parsing</td>
+          <td><span class="badge-tob">Trail of Bits</span></td>
+        </tr>
+        <tr class="new-item">
+          <td>tree-sitter</td>
+          <td>Solidity AST chunking (primary)</td>
+          <td><span class="badge-green">≥ 0.23.0</span></td>
+        </tr>
+        <tr>
+          <td>solc-select</td>
+          <td>Auto compiler version switching</td>
+          <td><span class="badge-multi">Multi-pragma</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- ══ AI / RAG ══ -->
+    <div class="section airag">
+      <div class="section-header">
+        <span class="icon">🧠</span>
+        <span>AI / RAG</span>
+      </div>
+      <table>
+        <tr>
+          <td>Google Gemini 2.5 Pro</td>
+          <td>LLM (Vertex AI)</td>
+          <td><span class="badge"></span></td>
+        </tr>
+        <tr class="new-item">
+          <td>Custom CRAG Pipeline</td>
+          <td>Orchestration (no LangChain)</td>
+          <td><span class="badge"></span></td>
+        </tr>
+        <tr class="new-item">
+          <td>Voyage AI voyage-code-3</td>
+          <td>Embedding Model – code-optimized 1024D</td>
+          <td><span class="badge"></span></td>
+        </tr>
+        <tr class="new-item">
+          <td>voyage-rerank-2.5</td>
+          <td>Reranking Model – code-aware</td>
+          <td><span class="badge"></span></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- ══ DATABASE & INFRA ══ -->
+    <div class="section database">
+      <div class="section-header">
+        <span class="icon">🗄️</span>
+        <span>DATABASE &amp; INFRA</span>
+      </div>
+      <table>
+        <tr class="new-item">
+          <td>Qdrant (local)</td>
+          <td>Vector Store – 21,032 audit entries</td>
+          <td><span class="badge"></span></td>
+        </tr>
+        <tr>
+          <td>OpenTelemetry</td>
+          <td>Observability / tracing</td>
+          <td><span class="badge"></span></td>
+        </tr>
+        <tr>
+          <td>python-dotenv</td>
+          <td>Environment config (.env)</td>
+          <td><span class="badge"></span></td>
+        </tr>
+        <tr>
+          <td>Google Cloud (gcloud)</td>
+          <td>Vertex AI auth – ADC credentials</td>
+          <td><span class="badge"></span></td>
+        </tr>
+      </table>
+    </div>
+
+  </div><!-- /grid -->
+
+  <!-- ── removed items note ── -->
+  <div style="margin-top:24px; padding:14px 18px; background:#fef9c3; border-radius:10px; font-size:0.83rem; color:#713f12; border-left:4px solid #f59e0b;">
+    <strong>Đã xóa so với phiên bản cũ:</strong>
+    Mythril (symbolic execution) &nbsp;·&nbsp;
+    LangChain (orchestration) &nbsp;·&nbsp;
+    microsoft/unixcoder-base (embedding) &nbsp;·&nbsp;
+    PyTorch 2.9.1 &nbsp;·&nbsp;
+    ChromaDB → thay bằng Qdrant &nbsp;·&nbsp;
+    sentence-transformers, transformers, onnxruntime (ML deps)
+  </div>
+
+</div>
+</body>
+</html>
